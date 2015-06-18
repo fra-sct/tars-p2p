@@ -4,7 +4,7 @@ Simple P2P protocol
 Requirements
 ------------
 The protocol must be:
-* P2P, aside from known peers provided any trackers
+* P2P, aside from known peers provided by any trackers
 * anonymous, no information must be stored about the peers
 * secure, communication between peers must be encrypted
 
