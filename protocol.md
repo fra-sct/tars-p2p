@@ -79,3 +79,9 @@ These peers will reply to a `SUBSCRIBE` packet by sending a `DATA` packet out, i
 `packets` table
 
     hash: [last_sent, data]
+
+If a peer has not received any `PEERS` or `PUBLISH` packets in a little while (it will need to keep a counter) it will rebroadcast both `PEERS` and `PUBLISH` as per the first connection.
+
+... I think that a few of the problems of this protocol come from the fact that the reception of a packet is not acknowledged. If I knew that the `PEERS` packet was received by the target then I could upgrade the `last_contacted` without problems.
+
+I could send a timestamp with them. As in, these peers have been sent based on the assumption that I updated you the last time on X. If X is wrong, then ask for a new update.
