@@ -45,3 +45,10 @@ Initial sketch of the code:
           send((ip, port), packet)
         elif now > alive + DELETE_EVERY:
           delete_peer(ip, port)
+
+### Data
+Data packets represent just that - data and message packets moving over the net. Each of these packets consists of two parts: the data itself, and an hash of the data. The hash is used to identify the data packet in the network.
+
+Each peer can `PUBLISH` a list of packets it owns, and adjacent peers can `SUBSCRIBE` to them, asking for any packets they don't own. These packets will then be sent out as `DATA` packets.
+
+This should work as per the Peer Discovery section - I need to add a `last_published` field to the peer list, and send out `PUBLISH` packets separately, for every packet that has been added after the peer was last contacted.
